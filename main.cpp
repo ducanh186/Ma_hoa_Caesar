@@ -7,21 +7,21 @@ string encrypt(string text, int key)// truyền vâo chuỗi cần giải mã v�
 	string result = "";// khai báo 1 chuỗi trống 
 	for (int i = 0; i < (int)text.length(); i++) {//xét từng phần tử của chuỗi
 		if (isupper(text[i]))//nếu viết hoa thì ...
-		result += char(int(text[i] + key - 65) % 26 + 65);//A =
+		result += char(int(text[i] + key - 65) % 26 + 65);//A =65
 		//Chuyển số thứ tự từ ASCII sang 0-26 để thêm bớt keyint//(text[i] + key - 65) % 26//
 		//Sau đó, lại chuyển về mã ASCII để gắn vào biến result(+65)
 
 		else//nếu viết thường thì tương tự với viết hoa
-		result += char(int(text[i] + key - 97) % 26 + 97);
+		result += char(int(text[i] + key - 97) % 26 + 97);//a=97
 	}
 	return result;
 }
 
-string decrypt(string text, int key){
+string decrypt(string text, int key){//Giải mã cũng tương tự nhưng - key thay vì + key
                string result = "";
 	for (int i = 0; i <(int) text.length(); i++) {
 		if (isupper(text[i]))
-			result += char(int(text[i] - key - 65 +26 ) % 26 + 65);//
+			result += char(int(text[i] - key - 65 +26 ) % 26 + 65);
 
 		else
 			result += char(int(text[i] - key - 97 + 26 ) % 26 + 97);
@@ -46,28 +46,28 @@ int main()
 	system("cls");
 	 cout<<setw(23)<<"\n___MA HOA___\n";
 	 string text;
-	 cout<<"\nNhap text can ma hoa:";
-	 cin.ignore();
+	 cout<<"\nNhap text can ma hoa: ";
 	 getline(cin,text);
 	 int key;
 	 cout<<"Shift: ";
 	 cin>>key;
+	 cin.ignore();
 	 cout<<"Cipher: "<<encrypt(text,key)<<endl;
 	}else if(option==2){
 	system("cls");
 	cout<<"\n___GIAI MA___\n"<<endl;
 	 string text;
-	 cout<<"\nNhap text can giai ma:";
-	 cin.ignore();
+	 cout<<"\nNhap text can giai ma: ";
 	 getline(cin,text);
 	 int key;
 	 cout<<"Shift: ";
 	 cin>>key;
+	 cin.ignore();
 	 cout<<"Plain: "<<decrypt(text,key)<<endl;
 	}else if(option==3){
 		printf("\nExit program!");
 		getchar();
         		exit(0);
 	}
-	}
+    }
 }
